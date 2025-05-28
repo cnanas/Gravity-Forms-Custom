@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Gravity Forms Custom Scripts
  * Description: Adds custom JavaScript and Salesforce GDPR logic for Gravity Forms.
- * Version: 1.0
+ * Version: 1.1
  * Author: Christian Nanas
  */
 
@@ -19,7 +19,7 @@ add_action('plugins_loaded', function () {
     }, 10, 4);
 });
 
-add_action('gform_enqueue_scripts_1', function () {
+add_action('gform_enqueue_scripts', function () {
     wp_enqueue_script(
         'gf-custom-js',
         plugin_dir_url(__FILE__) . 'js/gravityforms-custom.js',

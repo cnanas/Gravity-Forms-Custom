@@ -1,12 +1,17 @@
-document.addEventListener('DOMContentLoaded', function () {
+/**
+ * Initializes custom logic for Gravity Forms, including dynamic state field handling
+ * and consent checkbox management.
+ */
+function gravityFormsCustomInit() {
     // ------------------------------------
-    // List of Country/State field pairs by form
+    // List of Country/State field pairs by form, used to toggle state input type
     // ------------------------------------
     const fieldMappings = [
         { country: '#input_1_8_6', state: '#input_1_8_4', label: '#input_1_8_4_label' },
         { country: '#input_4_4_6', state: '#input_4_4_4', label: '#input_4_4_4_label' }
     ];
 
+    // Array of US states for populating the dropdown
     const usStates = [
         "", "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware",
         "District of Columbia", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa",
@@ -17,6 +22,13 @@ document.addEventListener('DOMContentLoaded', function () {
         "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"
     ];
 
+    /**
+     * Creates a dropdown element for state selection.
+     * @param {string} stateId - The ID for the dropdown element.
+     * @param {string} name - The name attribute for the dropdown.
+     * @param {string} selectedValue - The value to be selected by default.
+     * @returns {HTMLElement} The created dropdown element.
+     */
     function createDropdown(stateId, name, selectedValue = "") {
         const select = document.createElement('select');
         select.id = stateId;
@@ -36,11 +48,23 @@ document.addEventListener('DOMContentLoaded', function () {
         return select;
     }
 
+    /**
+     * Toggles the state field between a text input and a dropdown based on the selected country.
+     * @param {Object} mapping - The mapping object containing selectors for country and state fields.
+     */
     function toggleStateField(mapping) {
         const country = document.querySelector(mapping.country);
         const stateField = document.querySelector(mapping.state);
         const label = document.querySelector(mapping.label);
         const parent = stateField?.parentNode;
+
+        // Debugging output
+        console.log('GravityFormsCustom:');
+        console.log('  Mapping:', mapping);
+        console.log('  Country field:', country);
+        console.log('  Country value:', country ? country.value : 'N/A');
+        console.log('  State field:', stateField);
+        console.log('  State tagName:', stateField ? stateField.tagName : 'N/A');
 
         if (!country || !stateField || !parent) return;
 
@@ -66,6 +90,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // Initialize field mappings and add event listeners for country change
     fieldMappings.forEach(mapping => {
         const countryEl = document.querySelector(mapping.country);
         if (countryEl) {
@@ -75,18 +100,28 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // ------------------------------------
-    // Consent Checkbox Fix (sets "true") for Form 1
+    // Consent Checkbox Fix: Ensures the hidden consent value is set based on the checkbox state for Form 1
     // ------------------------------------
-    gform.addFilter('gform_pre_submission', function (formId) {
-        if (formId !== 1) return true;
+    if (typeof gform !== "undefined" && typeof gform.addFilter === "function") {
+        gform.addFilter('gform_pre_submission', function (formId) {
+            if (formId !== 1) return true;
 
-        const consentCheckbox = document.querySelector('#input_1_43_1');
-        const hiddenConsentValue = document.querySelector('input[name="input_43.3"]');
+            const consentCheckbox = document.querySelector('#input_1_43_1');
+            const hiddenConsentValue = document.querySelector('input[name="input_43.3"]');
 
-        if (consentCheckbox && hiddenConsentValue) {
-            hiddenConsentValue.value = consentCheckbox.checked ? "true" : "";
-        }
+            if (consentCheckbox && hiddenConsentValue) {
+                hiddenConsentValue.value = consentCheckbox.checked ? "true" : "";
+            }
 
-        return true;
-    });
-});
+            return true;
+        });
+    }
+}
+
+// Run initialization on DOMContentLoaded to ensure the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', gravityFormsCustomInit);
+
+// Also run initialization on Gravity Forms AJAX render to handle dynamic form loading
+if (typeof jQuery !== "undefined") {
+    jQuery(document).on('gform_post_render', gravityFormsCustomInit);
+}
