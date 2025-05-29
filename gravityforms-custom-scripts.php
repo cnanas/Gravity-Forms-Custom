@@ -20,11 +20,20 @@ add_action('plugins_loaded', function () {
 });
 
 add_action('gform_enqueue_scripts', function () {
+    // Enqueue custom JS
     wp_enqueue_script(
         'gf-custom-js',
         plugin_dir_url(__FILE__) . 'js/gravityforms-custom.js',
         array(),
         '1.0',
         true
+    );
+
+    // Enqueue custom CSS
+    wp_enqueue_style(
+        'gf-custom-css',
+        plugin_dir_url(__FILE__) . 'css/gravityforms-custom.css',
+        array(),
+        '1.0'
     );
 });

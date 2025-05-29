@@ -1,0 +1,99 @@
+/* Gravity Forms Custom Styles */
+
+/* Set primary color for form elements */
+body .gform_wrapper {
+  color: #17479e;
+}
+
+/* Make the "previous" button full width */
+body .gform_wrapper .gform_page_footer .gform_previous_button,
+body .gform_wrapper .gform_footer .gform_previous_button,
+body .gform_wrapper .gform_page_footer .gform_previous_button.gform-theme-button--secondary,
+body .gform_wrapper .gform_footer .gform_previous_button.gform-theme-button--secondary {
+    display: block !important;
+    width: 100% !important;
+    background-color: #fff !important;
+    color: #17479e !important;
+    border: 2px solid #17479e !important;
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+    padding: 12px 0 !important;
+    font-size: 13px !important;
+    border-radius: 4px !important;
+    text-align: center !important;
+    float: none !important;
+    box-sizing: border-box !important;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+body .gform_wrapper .gform_page_footer .gform_previous_button:hover,
+body .gform_wrapper .gform_footer .gform_previous_button:hover,
+body .gform_wrapper .gform_page_footer .gform_previous_button.gform-theme-button--secondary:hover,
+body .gform_wrapper .gform_footer .gform_previous_button.gform-theme-button--secondary:hover {
+    background-color: #f5f7fa !important;
+    color: #111c4e !important;
+    border-color: #111c4e !important;
+}
+/* Style Gravity Forms progress bar */
+body .gform_wrapper .gf_progressbar {
+  background: #e6eaf3;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+body .gform_wrapper .gf_progressbar_percentage {
+  background: #17479e !important;
+  color: #fff;
+  border-radius: 4px;
+  transition: width 0.3s;
+}
+
+body .gform_wrapper .gf_progressbar_percentage:hover {
+  background: #111c4e !important;
+}
+/* Primary submit button style */
+body .gform_wrapper .gform_button.button.gform-button--width-full,
+.gform_next_button .gform-theme-button button {
+    background-color: #17379e !important;
+    color: #fff !important;
+    border: none !important;
+    width: 100% !important;
+    font-size: 13px !important;
+    border-radius: 4px !important;
+    padding: 12px 0 !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+    transition: background 0.2s, color 0.2s;
+    margin-top: -10px!important;
+}
+body .gform_wrapper .gform_button.button.gform-button--width-full:hover {
+    background-color: #111c4e !important;
+    color: #fff !important;
+}
+
+
+.gform_heading {
+  display: none !important;
+}
+/* Primary next button style */
+body .gform_wrapper .gform_next_button,
+body .gform_wrapper .gform_next_button.gform-theme-button,
+body .gform_wrapper .gform_next_button.button {
+    background-color: #17379e !important;
+    color: #fff !important;
+    border: none !important;
+    width: 100% !important;
+    font-size: 16px !important;
+    border-radius: 4px !important;
+    padding: 12px 0 !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+    transition: background 0.2s, color 0.2s;
+}
+body .gform_wrapper .gform_next_button:hover,
+body .gform_wrapper .gform_next_button.gform-theme-button:hover,
+body .gform_wrapper .gform_next_button.button:hover {
+    background-color: #111c4e !important;
+    color: #fff !important;
+}

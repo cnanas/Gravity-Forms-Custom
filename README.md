@@ -42,3 +42,43 @@ The Gravity Forms Custom Scripts plugin enhances Gravity Forms by adding custom 
 ---
 
 This SOP provides clear instructions for installation, usage, and maintenance of the Gravity Forms Custom Scripts plugin.
+# Gravity Forms Custom Scripts - Styling Updates
+
+This plugin includes custom styles for Gravity Forms buttons to enhance the user interface and maintain consistent branding.
+
+## Button Styling Details
+
+### Previous Button (Secondary Button)
+- Font size: 13px
+- Style: Secondary button with white background
+- Border: 2px solid #17479e (blue)
+- Text color: #17479e (blue)
+- Full width with padding and rounded corners
+- Hover state: Light gray background (#f5f7fa), dark blue text (#111c4e), and border color changes to #111c4e
+
+### Submit Button (Primary Button)
+- Font size: 16px
+- Background color: #17379e (primary blue)
+- Text color: white (#fff)
+- No border
+- Full width with padding and rounded corners
+- Hover state: Darker blue background (#111c4e), white text
+
+### Next Button (Primary Button)
+- Matches the Submit button styling exactly:
+  - Font size: 16px
+  - Background color: #17379e
+  - Text color: white (#fff)
+  - No border
+  - Full width with padding and rounded corners
+  - Hover state: Darker blue background (#111c4e), white text
+
+## CSS Classes Targeted
+- Previous button: `.gform_previous_button` with `.gform-theme-button--secondary`
+- Submit button: `.gform_button.button.gform-button--width-full`
+- Next button: `.gform_next_button.gform-theme-button.button`
+
+These styles ensure consistent button appearance across Gravity Forms navigation and submission controls.
+
+## How to Customize
+Modify the CSS in `css/gravityforms-custom.css` to adjust colors, font sizes, or other styles as needed.
