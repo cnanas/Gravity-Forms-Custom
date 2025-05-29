@@ -1,4 +1,4 @@
-# Gravity Forms Custom Scripts - Standard Operating Procedure (SOP)
+# Gravity Forms Custom Scripts
 
 ## 1. Overview
 The Gravity Forms Custom Scripts plugin enhances Gravity Forms by adding custom JavaScript functionality and Salesforce GDPR logic. It dynamically manages form fields based on user input and ensures GDPR consent data is correctly handled for Salesforce integration.
